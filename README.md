@@ -34,6 +34,8 @@ sh run.sh
 
 Drag the mouse to move the hero aircraft. Avoid enemy bullets and collect props.
 
+For detailed rules and gameplay tips, see [HOW_TO_PLAY.md](HOW_TO_PLAY.md).
+
 ## Features
 
 - Chinese and English UI selectable from the start screen
