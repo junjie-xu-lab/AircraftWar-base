@@ -1,0 +1,18 @@
+@startuml
+title HeroAircraft Singleton Pattern
+
+class HeroAircraft {
+    - {static} {volatile} instance: HeroAircraft
+    - shootNum: int
+    - power: int
+    - direction: int
+    - HeroAircraft(int locationX, int locationY, int speedX, int speedY, int hp)
+    + {static} getInstance(int locationX, int locationY, int speedX, int speedY, int hp): HeroAircraft
+    + {static} getInstance(): HeroAircraft
+    + {static} resetInstance(): void
+    + forward(): void
+    + shoot(): List<BaseBullet>
+}
+
+@enduml
+

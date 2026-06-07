@@ -1,0 +1,94 @@
+@startuml
+title Prop Observer Pattern
+
+interface IPropObserver {
+    + onBombActivated(): void
+    + onFreezeActivated(): void
+}
+
+abstract class AbstractAircraft {
+    # isFrozen: boolean
+    # freezeTimer: int
+    + onBombActivated(): void
+    + onFreezeActivated(): void
+    + activateFreezeEffect(int duration): void
+    + updateFreezeTimer(): void
+}
+
+class MobEnemy {
+    + MobEnemy(int locationX, int locationY, int speedX, int speedY, int hp)
+    + onBombActivated(): void
+    + onFreezeActivated(): void
+}
+
+class EliteEnemy {
+    + EliteEnemy(int locationX, int locationY, int speedX, int speedY, int hp)
+    + onBombActivated(): void
+    + onFreezeActivated(): void
+}
+
+class ElitePlusEnemy {
+    + ElitePlusEnemy(int locationX, int locationY, int speedX, int speedY, int hp)
+    + onBombActivated(): void
+    + onFreezeActivated(): void
+}
+
+class EliteProEnemy {
+    - isSlowed: boolean
+    - slowTimer: int
+    - originalSpeedX: int
+    - originalSpeedY: int
+    + EliteProEnemy(int locationX, int locationY, int speedX, int speedY, int hp)
+    + onBombActivated(): void
+    + onFreezeActivated(): void
+}
+
+class BossEnemy {
+    + BossEnemy(int locationX, int locationY, int speedX, int speedY, int hp)
+    + onBombActivated(): void
+    + onFreezeActivated(): void
+}
+
+class EnemyBullet {
+    - isFrozen: boolean
+    - freezeTimer: int
+    + EnemyBullet(int locationX, int locationY, int speedX, int speedY, int power)
+    + onBombActivated(): void
+    + onFreezeActivated(): void
+}
+
+abstract class AbstractProp {
+    # observers: List<IPropObserver>
+    + registerObserver(o: IPropObserver): void
+    + removeObserver(o: IPropObserver): void
+    + notifyObservers(): void
+}
+
+class BombProp {
+    + BombProp(int locationX, int locationY, int speedX, int speedY)
+    + forward(): void
+    + activate(HeroAircraft hero): void
+    + notifyObservers(): void
+}
+
+class FreezeProp {
+    + FreezeProp(int locationX, int locationY, int speedX, int speedY)
+    + forward(): void
+    + activate(HeroAircraft hero): void
+    + notifyObservers(): void
+}
+
+IPropObserver <|.. AbstractAircraft
+AbstractAircraft <|-- MobEnemy
+AbstractAircraft <|-- EliteEnemy
+AbstractAircraft <|-- ElitePlusEnemy
+AbstractAircraft <|-- EliteProEnemy
+AbstractAircraft <|-- BossEnemy
+
+IPropObserver <|.. EnemyBullet
+
+AbstractProp <|-- BombProp
+AbstractProp <|-- FreezeProp
+
+AbstractProp o--> IPropObserver : observers
+@enduml

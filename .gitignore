@@ -1,0 +1,18 @@
+# Build outputs
+build/
+out/
+*.class
+
+# Local score files
+scores_difficulty_*.dat
+scores_difficulty_*.csv
+scores_difficulty_*.tsv
+
+# IDE and local tooling
+.idea/
+*.iml
+.codebuddy/
+
+# System files
+.DS_Store
+Thumbs.db

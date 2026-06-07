@@ -1,0 +1,81 @@
+@startuml
+title Game Difficulty Template Pattern
+
+abstract class GamePanel {
+    # difficulty: int
+    # heroAircraft: HeroAircraft
+    # enemyAircrafts: List<AbstractAircraft>
+    # heroBullets: List<BaseBullet>
+    # enemyBullets: List<BaseBullet>
+    # props: List<IProp>
+    # score: int
+    # enemyMaxNumber: int
+    # enemySpawnCycle: double
+    # heroShootCycle: double
+    # enemyShootCycle: double
+    - timer: Timer
+    # GamePanel()
+    + startGame(): void
+    # {template} gameLoop(): void
+    # {abstract} initializeSettings(): void
+    # {abstract} spawnEnemy(): void
+    # {abstract} checkBossSpawn(): void
+    # {abstract} applyDifficultyProgression(): void
+    # shootAction(): void
+    # bulletsMoveAction(): void
+    # aircraftsMoveAction(): void
+    # crashCheckAction(): void
+    # postProcessAction(): void
+    # checkResultAction(): void
+}
+
+note right of GamePanel
+  注：实验指导书要求将 Game 类的 action 方法重构为模板方法。
+  由于第五次迭代后原 Game 的主要功能已迁移到 GamePanel，
+  因此本图中 GamePanel 对应原 Game 类。
+  startGame() 对应原 action() 中启动定时任务的部分，
+  gameLoop() 对应原 action() 中定时执行的游戏主循环逻辑，
+  其中 gameLoop() 是本项目中的模板方法。
+end note
+
+class EasyGame {
+    + EasyGame()
+    + initializeSettings(): void
+    + spawnEnemy(): void
+    + checkBossSpawn(): void
+    + applyDifficultyProgression(): void
+}
+
+class NormalGame {
+    - bossHp: int
+    - bossScoreStep: int
+    - nextBossScore: int
+    - gameProgression: double
+    - progressionCounter: int
+    + NormalGame()
+    + initializeSettings(): void
+    + spawnEnemy(): void
+    + checkBossSpawn(): void
+    + applyDifficultyProgression(): void
+}
+
+class HardGame {
+    - bossBaseHp: int
+    - bossScoreStep: int
+    - nextBossScore: int
+    - bossHpMultiplier: double
+    - gameProgression: double
+    - progressionCounter: int
+    + HardGame()
+    + initializeSettings(): void
+    + spawnEnemy(): void
+    + checkBossSpawn(): void
+    + applyDifficultyProgression(): void
+}
+
+GamePanel <|-- EasyGame
+GamePanel <|-- NormalGame
+GamePanel <|-- HardGame
+
+@enduml
+
