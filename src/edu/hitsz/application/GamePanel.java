@@ -5,6 +5,7 @@ import edu.hitsz.bullet.BaseBullet;
 import edu.hitsz.basic.AbstractFlyingObject;
 import edu.hitsz.prop.IProp;
 import edu.hitsz.prop.AbstractProp;
+import edu.hitsz.prop.BombProp;
 import edu.hitsz.prop.IPropObserver;
 import edu.hitsz.prop.PropFactory;
 import edu.hitsz.dao.ScoreDAOImpl;
@@ -229,14 +230,10 @@ public abstract class GamePanel extends JPanel {
                 continue;
             }
             if (heroAircraft.crash((AbstractFlyingObject) prop)) {
-                registerPropObservers(prop);
-
-                if (prop instanceof edu.hitsz.prop.BombProp) {
-                    int bombScore = calculateBombScore();
-                    prop.activate(heroAircraft);
-                    score += bombScore;
-                    System.out.println("Bomb bonus score: " + bombScore);
+                if (prop instanceof BombProp) {
+                    activateBombProp((BombProp) prop);
                 } else {
+                    registerPropObservers(prop);
                     prop.activate(heroAircraft);
                 }
 
@@ -300,6 +297,25 @@ public abstract class GamePanel extends JPanel {
         }
     }
 
+    private void activateBombProp(BombProp bombProp) {
+        bombProp.activate(heroAircraft);
+
+        int bombScore = 0;
+        for (AbstractAircraft enemy : enemyAircrafts) {
+            if (enemy.notValid() || enemy instanceof BossEnemy) {
+                continue;
+            }
+            enemy.vanish();
+            bombScore += 10;
+        }
+        for (BaseBullet bullet : enemyBullets) {
+            bullet.vanish();
+        }
+
+        score += bombScore;
+        System.out.println("Bomb cleared enemies and bullets. Bonus score: " + bombScore);
+    }
+
     private void registerPropObservers(IProp prop) {
         if (prop instanceof AbstractProp) {
             AbstractProp abstractProp = (AbstractProp) prop;
@@ -316,26 +332,6 @@ public abstract class GamePanel extends JPanel {
                 }
             }
         }
-    }
-
-    private int calculateBombScore() {
-        int bombScore = 0;
-
-        for (AbstractAircraft enemy : enemyAircrafts) {
-            if (enemy.notValid() || enemy instanceof BossEnemy) {
-                continue;
-            }
-
-            if (enemy instanceof EliteProEnemy) {
-                if (enemy.getHp() <= 50) {
-                    bombScore += 10;
-                }
-            } else {
-                bombScore += 10;
-            }
-        }
-
-        return bombScore;
     }
 
 

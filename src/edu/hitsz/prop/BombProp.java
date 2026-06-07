@@ -5,7 +5,7 @@ import edu.hitsz.application.AudioManager;
 import edu.hitsz.application.Main;
 
 /**
- * Bomb prop that notifies enemies and enemy bullets.
+ * Bomb prop sound and pickup behavior. The game panel applies the clear-screen effect.
  */
 public class BombProp extends AbstractProp {
 
@@ -25,8 +25,6 @@ public class BombProp extends AbstractProp {
     public void activate(HeroAircraft hero) {
         System.out.println("Bomb prop activated.");
         AudioManager.getInstance().playBombExplosion();
-
-        notifyObservers();
     }
 
     @Override
