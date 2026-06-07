@@ -1,0 +1,79 @@
+@startuml
+title Aircraft War - Design Patterns
+
+skinparam packageStyle rectangle
+
+package "Template Method" {
+  abstract class GamePanel {
+    + startGame()
+    # gameLoop()
+    # initializeSettings()
+    # spawnEnemy()
+    # checkBossSpawn()
+    # applyDifficultyProgression()
+  }
+  class EasyGame
+  class NormalGame
+  class HardGame
+  GamePanel <|-- EasyGame
+  GamePanel <|-- NormalGame
+  GamePanel <|-- HardGame
+}
+
+package "Factory" {
+  interface IEnemyFactory
+  class MobEnemyFactory
+  class EliteEnemyFactory
+  class ElitePlusEnemyFactory
+  class EliteProEnemyFactory
+  class PropFactory
+  IEnemyFactory <|.. MobEnemyFactory
+  IEnemyFactory <|.. EliteEnemyFactory
+  IEnemyFactory <|.. ElitePlusEnemyFactory
+  IEnemyFactory <|.. EliteProEnemyFactory
+}
+
+package "Strategy" {
+  interface IShootStrategy
+  class ShootContext
+  class StraightShootStrategy
+  class SpreadShootStrategy
+  class CircleShootStrategy
+  class HeroAircraft
+  HeroAircraft --> ShootContext
+  ShootContext --> IShootStrategy
+  IShootStrategy <|.. StraightShootStrategy
+  IShootStrategy <|.. SpreadShootStrategy
+  IShootStrategy <|.. CircleShootStrategy
+}
+
+package "Observer" {
+  interface IPropObserver
+  abstract class AbstractProp
+  class FreezeProp
+  class BombProp
+  class AbstractAircraft
+  class EnemyBullet
+  AbstractProp --> IPropObserver
+  FreezeProp --|> AbstractProp
+  BombProp --|> AbstractProp
+  AbstractAircraft ..|> IPropObserver
+  EnemyBullet ..|> IPropObserver
+}
+
+note right of BombProp
+  The clear-screen effect is coordinated by GamePanel
+  so the score and object lists stay consistent.
+end note
+
+package "Singleton and DAO" {
+  class HeroAircraft
+  class AudioManager
+  class CardLayoutManager
+  interface ScoreDAO
+  class ScoreDAOImpl
+  class ScoreRecord
+  ScoreDAO <|.. ScoreDAOImpl
+  ScoreDAOImpl --> ScoreRecord
+}
+@enduml

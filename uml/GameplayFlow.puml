@@ -1,0 +1,34 @@
+@startuml
+title Aircraft War - Gameplay Flow
+
+start
+:Launch Main;
+:Show DifficultyMenu;
+:Select language and difficulty;
+:Create EasyGame, NormalGame, or HardGame;
+:Start GamePanel timer;
+
+repeat
+  :Spawn enemies when needed;
+  :Hero and enemies shoot;
+  :Move aircraft, bullets, and props;
+  :Check collisions;
+  if (Hero picks a prop?) then (yes)
+    if (Bomb prop?) then (yes)
+      :Clear non-boss enemies and enemy bullets;
+      :Add score for cleared enemies;
+    else (no)
+      :Apply prop effect;
+    endif
+  endif
+  :Remove invalid objects;
+  :Apply difficulty progression;
+  :Spawn boss if threshold is reached;
+repeat while (Hero HP > 0)
+
+:Stop timer and music;
+:Ask player name;
+:Save score for current difficulty;
+:Show LeaderboardUI;
+stop
+@enduml

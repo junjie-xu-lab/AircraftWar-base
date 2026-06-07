@@ -1,0 +1,46 @@
+package aircraftwar.prop;
+
+import aircraftwar.aircraft.HeroAircraft;
+import aircraftwar.application.Main;
+import aircraftwar.strategy.CircleShootStrategy;
+
+public class BulletPlusProp extends BaseProp {
+
+    private static final int DURATION = 5000;
+
+    public BulletPlusProp(int locationX, int locationY, int speedX, int speedY) {
+        super(locationX, locationY, speedX, speedY);
+    }
+
+    @Override
+    public void forward() {
+        super.forward();
+        if (locationY >= Main.WINDOW_HEIGHT) {
+            vanish();
+        }
+    }
+
+    @Override
+    public void activate(HeroAircraft hero) {
+        System.out.println("Circle fire active for " + DURATION + " ms.");
+        int version = hero.activateTemporaryShootStrategy(new CircleShootStrategy());
+
+        Runnable restoreTask = () -> {
+            try {
+                Thread.sleep(DURATION);
+                hero.restoreShootStrategyIfCurrent(version);
+                System.out.println("Circle fire ended.");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        };
+
+        Thread restoreThread = new Thread(restoreTask);
+        restoreThread.setDaemon(true);
+        restoreThread.start();
+    }
+}
+
+
+
+

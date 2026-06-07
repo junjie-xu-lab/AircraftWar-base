@@ -25,7 +25,7 @@ public class RunAircraftWar {
         Files.createDirectories(outputDir);
 
         List<File> sourceFiles = new ArrayList<>();
-        try (var stream = Files.walk(Paths.get("src", "edu"))) {
+        try (var stream = Files.walk(Paths.get("src", "aircraftwar"))) {
             stream.filter(path -> path.toString().endsWith(".java"))
                     .forEach(path -> sourceFiles.add(path.toFile()));
         }
@@ -46,7 +46,7 @@ public class RunAircraftWar {
         };
         URLClassLoader classLoader = new URLClassLoader(classPath);
         Thread.currentThread().setContextClassLoader(classLoader);
-        Class<?> mainClass = classLoader.loadClass("edu.hitsz.application.Main");
+        Class<?> mainClass = classLoader.loadClass("aircraftwar.application.Main");
         Method main = mainClass.getMethod("main", String[].class);
         main.invoke(null, (Object) new String[0]);
     }

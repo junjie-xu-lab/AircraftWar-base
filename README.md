@@ -14,7 +14,7 @@ Run this command from the project root:
 java RunAircraftWar.java
 ```
 
-This compiles the source code into `build/classes` and starts `edu.hitsz.application.Main`.
+This compiles the source code into `build/classes` and starts `aircraftwar.application.Main`.
 
 ### Optional Scripts
 
@@ -50,22 +50,21 @@ Drag the mouse to move the hero aircraft. Avoid enemy bullets and collect props.
 - Factory Method: enemy creation through enemy factories
 - Simple Factory: prop creation through `PropFactory`
 - Strategy: hero bullet patterns through shooting strategies
-- Observer: bomb and freeze props notify enemies and bullets
+- Observer: freeze props notify enemies and bullets
 - DAO: leaderboard persistence through `ScoreDAO`
 
 ## Project Structure
 
 ```text
 src/
-  edu/hitsz/application/   main UI, game loop, resource and audio managers
-  edu/hitsz/aircraft/      hero, enemies, and enemy factories
-  edu/hitsz/bullet/        hero and enemy bullets
-  edu/hitsz/prop/          collectible props
-  edu/hitsz/strategy/      shooting strategies
-  edu/hitsz/dao/           leaderboard storage
+  aircraftwar/application/ main UI, game loop, resource and audio managers
+  aircraftwar/aircraft/    hero, enemies, and enemy factories
+  aircraftwar/bullet/      hero and enemy bullets
+  aircraftwar/prop/        collectible props
+  aircraftwar/strategy/    shooting strategies
+  aircraftwar/dao/         leaderboard storage
   images/                  game images
   videos/                  sound files
-test/                      optional JUnit tests
 uml/                       design diagrams
 ```
 
