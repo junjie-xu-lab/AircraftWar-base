@@ -6,23 +6,29 @@ A Java Swing aircraft shooting game with bilingual UI, three difficulty modes, p
 
 You only need JDK 11 or newer. No Maven, Gradle, IntelliJ GUI Designer, or third-party library is required to play.
 
-### Windows
+### Recommended
 
-Double-click `run.bat`, or run:
+Run this command from the project root:
+
+```sh
+java RunAircraftWar.java
+```
+
+This compiles the source code into `build/classes` and starts `edu.hitsz.application.Main`.
+
+### Optional Scripts
+
+Windows may block downloaded `.bat` files through Smart App Control. If your system allows scripts, you can also run:
 
 ```bat
 run.bat
 ```
 
-### macOS / Linux
-
-Run:
+On macOS / Linux, you can run:
 
 ```sh
 sh run.sh
 ```
-
-The scripts compile the source code into `build/classes` and start `edu.hitsz.application.Main`.
 
 ## Controls
 
