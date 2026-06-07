@@ -70,6 +70,14 @@ src/
 uml/                       design diagrams
 ```
 
+## Release Notes
+
+See [RELEASE_NOTES.md](RELEASE_NOTES.md) for version history.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
 ## Notes
 
 Runtime score files are generated as `scores_difficulty_*.tsv` and are ignored by Git.
