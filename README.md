@@ -2,7 +2,26 @@
 
 A Java Swing aircraft shooting game with bilingual UI, three difficulty modes, props, boss fights, sound effects, and a local leaderboard.
 
-## Quick Start
+## For Players
+
+If you only want to play the game, download the Windows package from the
+[Releases](https://github.com/junjie-xu-lab/AircraftWar/releases) page.
+
+Download:
+
+```text
+AircraftWar-v2.0.0-windows.zip
+```
+
+Then unzip it and double-click:
+
+```text
+AircraftWar.exe
+```
+
+Java is included in the package, so you do not need to install Java.
+
+## For Developers
 
 You only need JDK 11 or newer. No Maven, Gradle, IntelliJ GUI Designer, or third-party library is required to play.
 
@@ -81,3 +100,17 @@ This project is licensed under the [MIT License](LICENSE).
 ## Notes
 
 Runtime score files are generated as `scores_difficulty_*.tsv` and are ignored by Git.
+
+## Build a Windows Release Package
+
+On Windows, JDK 14 or newer with `jpackage` is required. Run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/package-windows.ps1 -Version 2.0.0
+```
+
+The generated package will be:
+
+```text
+dist/AircraftWar-v2.0.0-windows.zip
+```

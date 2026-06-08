@@ -1,5 +1,36 @@
 # Release Notes
 
+## v2.0.0
+
+Second public release focused on easier access for non-technical players.
+
+### Highlights
+
+- Added a Windows release package with `AircraftWar.exe`.
+- Bundled a Java runtime in the Windows package, so players do not need to install Java.
+- Added a packaging script based on the official JDK `jpackage` tool.
+- Updated README instructions for players and developers.
+
+### Player Download
+
+Download from GitHub Releases:
+
+```text
+AircraftWar-v2.0.0-windows.zip
+```
+
+Unzip it and double-click:
+
+```text
+AircraftWar.exe
+```
+
+### Developer Packaging Command
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/package-windows.ps1 -Version 2.0.0
+```
+
 ## v1.0.0
 
 Initial public release of Aircraft War.
