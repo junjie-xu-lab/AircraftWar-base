@@ -101,9 +101,16 @@ This project is licensed under the [MIT License](LICENSE).
 
 Runtime score files are generated as `scores_difficulty_*.tsv` and are ignored by Git.
 
-## Build a Windows Release Package
+## For Maintainers: Build a Windows Release Package
 
-On Windows, JDK 14 or newer with `jpackage` is required. Run:
+This section is only needed when preparing a new GitHub Release package.
+Players who download `AircraftWar-v2.0.0-windows.zip` do not need to install Java.
+
+To run the source code, JDK 11 or newer is enough. To build the Windows package
+with `AircraftWar.exe` and a bundled runtime, use JDK 14 or newer because it
+includes the official `jpackage` tool.
+
+Run:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/package-windows.ps1 -Version 2.0.0
