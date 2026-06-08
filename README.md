@@ -2,6 +2,12 @@
 
 A Java Swing aircraft shooting game with bilingual UI, three difficulty modes, props, boss fights, sound effects, and a local leaderboard.
 
+## Screenshots
+
+| Main Menu | Gameplay |
+| --- | --- |
+| ![Main menu](docs/screenshots/menu.png) | ![Gameplay](docs/screenshots/gameplay.png) |
+
 ## For Players
 
 If you only want to play the game, download the Windows package from the
