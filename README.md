@@ -4,9 +4,18 @@ A Java Swing aircraft shooting game with bilingual UI, three difficulty modes, p
 
 ## Screenshots
 
-| Chinese Menu | English Menu | Gameplay |
-| --- | --- | --- |
-| ![Chinese menu](docs/screenshots/menu-zh.png) | ![English menu](docs/screenshots/menu-en.png) | ![Gameplay](docs/screenshots/gameplay.png) |
+<table>
+  <tr>
+    <td align="center"><strong>Chinese Menu</strong></td>
+    <td align="center"><strong>English Menu</strong></td>
+    <td align="center"><strong>Gameplay</strong></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/menu-zh.png" alt="Chinese menu" width="240"></td>
+    <td><img src="docs/screenshots/menu-en.png" alt="English menu" width="240"></td>
+    <td><img src="docs/screenshots/gameplay.png" alt="Gameplay" width="240"></td>
+  </tr>
+</table>
 
 ## For Players
 
