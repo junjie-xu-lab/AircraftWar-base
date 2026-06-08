@@ -4,9 +4,9 @@ A Java Swing aircraft shooting game with bilingual UI, three difficulty modes, p
 
 ## Screenshots
 
-| Main Menu | Gameplay |
-| --- | --- |
-| ![Main menu](docs/screenshots/menu.png) | ![Gameplay](docs/screenshots/gameplay.png) |
+| Chinese Menu | English Menu | Gameplay |
+| --- | --- | --- |
+| ![Chinese menu](docs/screenshots/menu-zh.png) | ![English menu](docs/screenshots/menu-en.png) | ![Gameplay](docs/screenshots/gameplay.png) |
 
 ## For Players
 
